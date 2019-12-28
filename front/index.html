@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="css/foot.css"/>
+    <link rel="stylesheet" type="text/css" href="fontico/iconfont.css"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	
+      	mui.plusReady(function(){
+      		plus.navigator.setStatusBarStyle("dark")
+      		plus.navigator.setStatusBarBackground("#EEEEEE");
+      	});
+    </script>
+</head>
+<body>
+	
+	<header class="mui-bar mui-bar-nav title">
+	    <h1 class="mui-title title-color"><b>微信</b></h1>
+	</header>
+	
+	<nav class="mui-bar mui-bar-tab">
+	    <a class="mui-tab-item mui-active" tabindex="0">
+	        <span class="mui-icon iconfont icon-duihuaqipao"></span>
+	        <span class="mui-tab-label">微信</span>
+	    </a>
+	    <a class="mui-tab-item" tabindex="1">
+	        <span class="mui-icon iconfont icon-tongxunlu"></span>
+	        <span class="mui-tab-label">通讯录</span>
+	    </a>
+	    <a class="mui-tab-item" tabindex="2">
+	        <span class="mui-icon iconfont icon-zhinanzhen"></span>
+	        <span class="mui-tab-label">发现</span>
+	    </a>
+	    <a class="mui-tab-item" tabindex="3">
+	        <span class="mui-icon iconfont icon-geren"></span>
+	        <span class="mui-tab-label">我</span>
+	    </a>
+	</nav>
+	
+	<script type="text/javascript">
+		
+		var weixinArray = [
+			{
+				pageId: "chatList.html",
+				pageUrl: "chatList.html"
+			},
+			{
+				pageId: "contact.html",
+				pageUrl: "contact.html"
+			},
+			{
+				pageId: "discover.html",
+				pageUrl: "discover.html"
+			},
+			{
+				pageId: "me.html",
+				pageUrl: "me.html"
+			}
+		];
+		
+		var weixinStyle = {
+			top: "50px",
+			bottom: "60px"
+		}
+		
+		mui.plusReady(function(){
+			
+			mui.back = function(){
+				return false;
+			}
+			
+			//获取当前的webview对象
+			var indexWebview = plus.webview.currentWebview();
+			//向当前的主页webview追加子页的4张webview对象
+			for(var i = 0; i < weixinArray.length; i++){
+				var weixinPage = plus.webview.create(weixinArray[i].pageUrl,
+													 weixinArray[i].pageId,
+													 weixinStyle);
+				//隐藏
+				weixinPage.hide();
+				//追加每一个子页面到当前主页面
+				indexWebview.append(weixinPage);
+			}
+			plus.webview.show(weixinArray[0].pageId);
+			
+			//批量绑定tap事件，展示不同的webview页面
+			mui(".mui-bar-tab").on("tap", "a", function(){
+				var tabIndex = this.getAttribute("tabindex");
+				//显示点击的tab选项对应的页面
+				plus.webview.show(weixinArray[tabIndex].pageId, "fade-in", 200);
+				//隐藏其他页面
+				for(var i = 0; i < weixinArray.length; i++){
+					if( i!= tabIndex){
+						plus.webview.hide(weixinArray[i].pageId, "fade-out", 200);
+					}
+				}
+			});
+			
+			// 延时加载
+			setTimeout("initData()", "1000");
+		})
+		
+		// 预加载
+		function initData() {
+			var chatlist = plus.webview.getWebviewById("chatList.html");
+			mui.fire(chatlist, "refresh");
+			
+			var me = plus.webview.getWebviewById("me.html");
+			mui.fire(me, "refresh");
+		}
+		
+	</script>
+	
+	
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="css/registLogin/util.css">
+		<link rel="stylesheet" type="text/css" href="css/registLogin/main.css">
+
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+
+		<style>
+			.p-t-85 {
+				padding-top: 10px;
+			}
+			
+			.p-b-70 {
+				padding-bottom: 35px;
+			}
+			
+			.m-t-85 {
+				margin-top: 15px;
+			}
+			
+			.container-login100 {
+				padding: 25px;
+			}
+			/*toast信息提示*/
+			
+			.mui-toast-container {
+				bottom: 50% !important;
+			}
+			.mui-toast-message {
+				opacity: 0.6;
+				color: #fff;
+				width: 180px;
+				padding: 70px 5px 10px 5px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="mui-content">
+			<div class="container-login100">
+				<div class="wrap-login100 p-t-85 p-b-20">
+					<form id="userform">
+						<span class="login100-form-title p-b-70">
+							<h6>微信</h6>
+						</span>
+						<span class="login100-form-avatar">
+							<img id="img_login_face" src="css/registLogin/arrow.jpg" alt="微信登录">
+						</span>
+
+						<div class="wrap-input100 validate-input m-t-85 m-b-35">
+							<input class="input100" type="text" id="username" name="username" placeholder="用户名">
+							<span class="focus-input100"></span>
+						</div>
+
+						<div class="wrap-input100 validate-input m-b-50">
+							<input class="input100" type="password" id="txt_password" name="password" placeholder="密码">
+							<span class="focus-input100"></span>
+						</div>
+						<div class="container-login100-form-btn">
+							<button type="submit" id="registOrLogin" class="login100-form-btn">
+								登录/注册
+							</button>
+						</div>
+					</form>
+					
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/app.js" ></script>
+		<script type="text/javascript">
+			
+			mui.plusReady(function(){
+				
+				//判断是否登录过
+				var userInfo = app.getUserGlobalInfo();
+				if(userInfo != null){
+//					mui.openWindow("index.html","index.html",{"createNew":true});
+					mui.openWindow({
+						    url:"index.html",
+						    id:"index.html",
+						    createNew:true
+						});
+				}
+				
+				
+				var userform = document.getElementById("userform");
+				var username = document.getElementById("username");
+				var txt_password = document.getElementById("txt_password");
+				
+				userform.addEventListener("submit", function(e){
+					if(!app.isNotNull(username.value)){
+						app.showToast("用户名不能为空","error");
+						return false;
+					}
+					if(!app.isNotNull(txt_password.value)){
+						app.showToast("密码不能为空","error");
+						return false;
+					}
+					if(username.value.length>12){
+						app.showToast("用户名长度不能超过12","error");
+						return false;
+					}
+					if(txt_password.value.length>12){
+						app.showToast("密码长度不能超过12","error");
+						return false;
+					}
+					
+					var cid = plus.push.getClientInfo().clientid;
+					
+					mui.ajax(app.serverUrl + "/user/loginOrRegister",{
+						data:{
+							username:username.value,
+							password:txt_password.value,
+							cid:cid
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:3000,//超时时间设置为3秒；
+						headers:{'Content-Type':'application/json'},	              
+						success:function(data){
+							//服务器返回响应，根据响应结果，分析是否登录成功；
+								console.log("data："+JSON.stringify(data));
+								username.blur();
+								txt_password.blur();
+							
+								if (data.status == 200) {
+									// 登录或者注册成功之后，保存全局用户对象到本地缓存
+									var userInfoJson = data.data;
+									app.setUserGlobalInfo(userInfoJson);
+									
+									// 页面跳转
+									mui.openWindow({
+									    url:"index.html",
+									    id:"index.html",
+									    createNew:true
+									});
+								} else {
+									app.showToast(data.msg, "error");
+								}
+						},
+						error:function(xhr,type,errorThrown){
+							//异常处理；
+							app.showToast("服务器异常","error");
+							console.log(type);
+						}
+					});
+					
+					//阻止表单默认提交
+					e.preventDefault();
+				});
+			});
+			
+		</script>
+
+	</body>
+
+</html>

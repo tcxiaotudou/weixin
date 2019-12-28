@@ -1,0 +1,216 @@
+{
+  "chatList.html": {
+    "href": "chatList.html",
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "js/app.js"
+    ],
+    "refer": [
+      "chatting.html"
+    ],
+    "priority": 0
+  },
+  "chatting.html": {
+    "href": "chatting.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/header.css",
+      "css/chat.css",
+      "js/mui.min.js",
+      "js/app.js",
+      "mp3/di_didi.mp3",
+      "mp3/send.mp3"
+    ],
+    "refer": [
+      "chatList.html"
+    ],
+    "priority": 0
+  },
+  "contact.html": {
+    "href": "contact.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/mui.indexedlist.css",
+      "js/mui.min.js",
+      "js/mui.indexedlist.js",
+      "js/app.js",
+      "js/nickname.js"
+    ],
+    "refer": [
+      "chatting.html"
+    ],
+    "priority": 0
+  },
+  "myQRCode.html": {
+    "href": "myQRCode.html",
+    "resources": [
+      "js/mui.js",
+      "css/mui.css",
+      "css/header.css",
+      "js/app.js",
+      "image/download.png"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "plugin/v3.1.6/index.html": {
+    "href": "plugin/v3.1.6/index.html",
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "plugin/v3.1.6/css/cropper.css",
+      "plugin/v3.1.6/css/main.css",
+      "plugin/v3.1.6/js/cropper.js",
+      "css/registLogin/arrow.jpg"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "plugin/v3.1.6/myface-uploader.html": {
+    "href": "plugin/v3.1.6/myface-uploader.html",
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "css/header.css",
+      "plugin/v3.1.6/css/cropper.css",
+      "plugin/v3.1.6/css/main.css",
+      "plugin/v3.1.6/js/cropper.js",
+      "js/app.js",
+      "image/upload.png"
+    ],
+    "refer": [
+      "plugin/v3.1.6/index.html"
+    ],
+    "priority": 0
+  },
+  "myface.html": {
+    "href": "myface.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/header.css",
+      "js/mui.min.js",
+      "js/app.js",
+      "image/face-default-cat.png"
+    ],
+    "refer": [
+      "plugin/v3.1.6/myface-uploader.html"
+    ],
+    "priority": 0
+  },
+  "mynickname.html": {
+    "href": "mynickname.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/header.css",
+      "js/mui.min.js",
+      "js/app.js"
+    ],
+    "refer": [
+      "me.html"
+    ],
+    "priority": 0
+  },
+  "me.html": {
+    "href": "me.html",
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "js/app.js",
+      "image/face-default-cat.png",
+      "image/qrcode.png"
+    ],
+    "refer": [
+      "myQRCode.html",
+      "login.html",
+      "myface.html",
+      "mynickname.html"
+    ],
+    "priority": 0
+  },
+  "searchFriendsResult.html": {
+    "href": "searchFriendsResult.html",
+    "resources": [
+      "js/mui.js",
+      "css/mui.css",
+      "css/header.css",
+      "js/app.js"
+    ],
+    "refer": [
+      "index.html"
+    ],
+    "priority": 0
+  },
+  "searchFriends.html": {
+    "href": "searchFriends.html",
+    "resources": [
+      "css/mui.min.css",
+      "css/header.css",
+      "js/mui.min.js",
+      "js/app.js"
+    ],
+    "refer": [
+      "searchFriendsResult.html"
+    ],
+    "priority": 0
+  },
+  "scanme.html": {
+    "href": "scanme.html",
+    "resources": [
+      "js/mui.js",
+      "css/mui.css",
+      "css/header.css",
+      "js/app.js"
+    ],
+    "refer": [
+      "searchFriendsResult.html"
+    ],
+    "priority": 0
+  },
+  "discover.html": {
+    "href": "discover.html",
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "image/friends.png",
+      "image/addfriends.png",
+      "image/scanscan.png"
+    ],
+    "refer": [
+      "searchFriends.html",
+      "scanme.html"
+    ],
+    "priority": 0
+  },
+  "index.html": {
+    "href": "index.html",
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "css/header.css",
+      "css/foot.css",
+      "fontico/iconfont.css"
+    ],
+    "refer": [
+      "contact.html",
+      "me.html",
+      "chatList.html",
+      "discover.html"
+    ],
+    "priority": 0
+  },
+  "login.html": {
+    "href": "login.html",
+    "resources": [
+      "js/mui.min.js",
+      "css/registLogin/util.css",
+      "css/registLogin/main.css",
+      "js/app.js",
+      "css/registLogin/arrow.jpg"
+    ],
+    "refer": [
+      "index.html"
+    ],
+    "priority": 0
+  }
+}

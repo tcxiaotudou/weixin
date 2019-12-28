@@ -1,0 +1,11 @@
+.mui-bar-tab{
+	height: 80px;
+	background-color: #EEEEEE;
+	line-height: 100px;
+}
+
+.mui-bar-tab a{
+	top: 0px;
+	line-height: 22px;
+}
+
