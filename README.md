@@ -20,6 +20,8 @@
 
 #### 展示效果
 
+<div align=center><img src="https://i.loli.net/2019/12/28/JQpsayh9dXMLSkP.png"/></div>
+
 ![image-20191228143408130](https://i.loli.net/2019/12/28/JQpsayh9dXMLSkP.png)
 
 ![image-20191228143418374](https://i.loli.net/2019/12/28/4QeSE2gHwFafsNU.png)
